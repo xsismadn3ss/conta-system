@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    "thekalinga.bootstrap4-vscode", // Bootstrap 4, 5 Snippets and Intellisense
+    "batisteo.vscode-django",       // Django support
+    "ms-python.python",             // Python extension (necesario para Django)
+    "esbenp.prettier-vscode",        // Prettier para formateo de código
+  ]
+}
