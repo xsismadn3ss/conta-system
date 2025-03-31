@@ -1,4 +1,11 @@
 asgiref==3.8.1
-Django==5.1.7
+beautifulsoup4==4.13.3
+Brotli==1.1.0
+Django==4.2.20
+django-bootstrap-v5==1.0.11
 packaging==24.2
+python-dotenv==1.1.0
+soupsieve==2.6
 sqlparse==0.5.3
+typing_extensions==4.13.0
+whitenoise==6.9.0
