@@ -1,0 +1,14 @@
+<!-- templates/404.html -->
+{% extends "base.html" %}
+
+{% block title %}Página no encontrada{% endblock %}
+
+{% block content %}
+    <div style="height:80vh;">
+        <div class="pt-xl-5">
+            <h1>¡Ups!</h1>
+            <p>La página que buscas no está disponible. <br>
+            Volver a <a href="{% url 'home' %}">página de inicio</a></p>
+        </div>
+    </div>
+{% endblock %}
