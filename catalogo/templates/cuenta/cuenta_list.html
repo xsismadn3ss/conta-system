@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Cuentas Contables{% endblock title %}
+{% block content %}
+<h1>Listado de Cuentas Contables</h1>
+<a href="{% url 'catalogo:cuenta_create' %}" class="btn btn-primary">Nueva Cuenta</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Código</th>
+            <th>Nombre</th>
+            <th>Tipo</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for cuenta in cuentas %}
+        <tr>
+            <td>{{ cuenta.codigo }}</td>
+            <td>{{ cuenta.nombre }}</td>
+            <td>{{ cuenta.tipo }}</td>
+            <td>{% if cuenta.estado %}Activa{% else %}Inactiva{% endif %}</td>
+            <td>
+                <a href="{% url 'catalogo:cuenta_detail' cuenta.id %}" class="btn btn-sm btn-info">Ver</a>
+                <a href="{% url 'catalogo:cuenta_update' cuenta.id %}" class="btn btn-sm btn-warning">Editar</a>
+                <a href="{% url 'catalogo:cuenta_delete' cuenta.id %}" class="btn btn-sm btn-danger">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
