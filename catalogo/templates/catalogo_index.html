@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Catálogo de cuentas{% endblock title %}
+{% block content %}
+<h1 class="text-dark">Catálogo de cuentas</h1>
+<div class="container mt-4 bg-light">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Cuentas</h5>
+                    <p class="card-text">Gestionar el listado de cuentas contables</p>
+                    <a href="{% url 'catalogo:cuenta_list' %}" class="btn btn-primary">Ir a Cuentas</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Jerarquías</h5>
+                    <p class="card-text">Administrar las jerarquías de cuentas</p>
+                    <a href="{% url 'catalogo:jerarquia_list' %}" class="btn btn-primary">Ir a Jerarquías</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Tipos</h5>
+                    <p class="card-text">Gestionar los tipos de cuentas</p>
+                    <a href="{% url 'catalogo:tipo_list' %}" class="btn btn-primary">Ir a Tipos</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
