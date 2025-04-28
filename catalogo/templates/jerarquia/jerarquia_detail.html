@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Jerarquia: {{ jerarquia.nombre }}{% endblock title %}
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <h2>Detalle de Jerarquía</h2>
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">{{ jerarquia.nombre }}</h5>
+        <p class="card-text">ID: {{ jerarquia.id }}</p>
+        
+        <div class="mt-4">
+            <a href="{% url 'catalogo:jerarquia_update' jerarquia.id %}" class="btn btn-warning">Editar</a>
+            <a href="{% url 'catalogo:jerarquia_list' %}" class="btn btn-secondary">Volver al listado</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

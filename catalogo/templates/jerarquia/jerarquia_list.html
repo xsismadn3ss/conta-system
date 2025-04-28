@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Listado de Jerarquías</h1>
+<a href="{% url 'catalogo:jerarquia_create' %}" class="btn btn-primary">Nueva Jerarquía</a>
+
+{% if jerarquias %}
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for jerarquia in jerarquias %}
+        <tr>
+            <td>{{ jerarquia.id }}</td>
+            <td>{{ jerarquia.nombre }}</td>
+            <td>
+                <a href="{% url 'catalogo:jerarquia_detail' jerarquia.id %}" class="btn btn-sm btn-info">Ver</a>
+                <a href="{% url 'catalogo:jerarquia_update' jerarquia.id %}" class="btn btn-sm btn-warning">Editar</a>
+                <a href="{% url 'catalogo:jerarquia_delete' jerarquia.id %}" class="btn btn-sm btn-danger">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<div class="alert alert-info" role="alert">
+    No hay jerarquías registradas en el sistema.
+</div>
+{% endif %}
+{% endblock %}
