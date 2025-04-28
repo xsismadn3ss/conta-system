@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Tipo de cuenta no encontrado{% endblock title %}
+{% block content %}
+<div class="alert alert-danger" role="alert">
+    <h4 class="alert-heading">Ups</h4>
+    <p>El tipo de cuenta que estás buscando no existe o ha sido eliminado.</p>
+    <hr>
+    <p class="mb-0">
+        <a href="{% url 'catalogo:tipo_list' %}" class="btn btn-primary">
+            Volver al listado de tipos
+        </a>
+    </p>
+</div>
+{% endblock %}

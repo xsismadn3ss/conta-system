@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Tipo de cuenta: {{ tipo.nombre }}{% endblock title %}
+{% block content %}
+<h1>Detalle del Tipo</h1>
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">{{ tipo.nombre }}</h5>
+        <p class="card-text">Jerarquía: {{ tipo.jerarquia }}</p>
+        <a href="{% url 'catalogo:tipo_update' tipo.id %}" class="btn btn-warning">Editar</a>
+        <a href="{% url 'catalogo:tipo_list' %}" class="btn btn-secondary">Volver</a>
+    </div>
+</div>
+{% endblock %}

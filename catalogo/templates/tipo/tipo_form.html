@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Editar tipo de cuenta{% endblock title %}
+{% block content %}
+<h1>{% if object %}Editar{% else %}Crear{% endif %} Tipo</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Guardar</button>
+    <a href="{% url 'catalogo:tipo_list' %}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}
