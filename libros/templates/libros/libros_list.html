@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}Libros Mayores{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="text-dark">Libros Mayores</h1>
+    <a href="{% url 'libros:libros_create' %}" class="btn btn-primary mb-3">Nuevo Libro</a>
+    
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Cuenta</th>
+                    <th>Saldo Anterior</th>
+                    <th>Movimiento</th>
+                    <th>Saldo Final</th>
+                    <th>Tipo Movimiento</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for libro in libros %}
+                <tr>
+                    <td>{{ libro.id }}</td>
+                    <td>{{ libro.cuenta }}</td>
+                    <td>{{ libro.saldo_anterior }}</td>
+                    <td>{{ libro.movimiento }}</td>
+                    <td>{{ libro.saldo_final }}</td>
+                    <td>{{ libro.tipo_movimiento }}</td>
+                    <td>
+                        <a href="{% url 'libros:libros_detail' libro.id %}" class="btn btn-sm btn-info">Ver</a>
+                        <a href="{% url 'libros:libros_update' libro.id %}" class="btn btn-sm btn-warning">Editar</a>
+                        <a href="{% url 'libros:libros_delete' libro.id %}" class="btn btn-sm btn-danger">Eliminar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

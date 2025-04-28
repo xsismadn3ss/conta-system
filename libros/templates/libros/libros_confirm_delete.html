@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Eliminar Libro Mayor{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="text-dark">Confirmar Eliminación</h1>
+    
+    <div class="alert alert-danger">
+        <p>¿Estás seguro que deseas eliminar el libro mayor con ID: {{ libro.id }}?</p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Eliminar</button>
+            <a href="{% url 'libros:libros_list' %}" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Libro no encontrado{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="alert alert-danger">
+        <h1>Error 404</h1>
+        <p>El libro mayor que estás buscando no existe o ha sido eliminado.</p>
+        <a href="{% url 'libros:libros_list' %}" class="btn btn-primary">Volver al listado</a>
+    </div>
+</div>
+{% endblock %}
