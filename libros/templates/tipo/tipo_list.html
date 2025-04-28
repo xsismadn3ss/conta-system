@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Tipos{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="text-dark">Listado de Tipos</h1>
+    <a href="{% url 'libros:tipo_create' %}" class="btn btn-primary mb-3">Nuevo Tipo</a>
+    
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for tipo in tipos %}
+            <tr>
+                <td>{{ tipo.id }}</td>
+                <td>{{ tipo.nombre }}</td>
+                <td>
+                    <a href="{% url 'libros:tipo_detail' tipo.id %}" class="btn btn-sm btn-info">Ver</a>
+                    <a href="{% url 'libros:tipo_update' tipo.id %}" class="btn btn-sm btn-warning">Editar</a>
+                    <a href="{% url 'libros:tipo_delete' tipo.id %}" class="btn btn-sm btn-danger">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

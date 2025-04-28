@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Detalle Tipo{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="text-dark">Detalle Tipo</h1>
+    
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">ID: {{ tipo.id }}</h5>
+            <p class="card-text"><strong>Nombre:</strong> {{ tipo.nombre }}</p>
+            
+            <a href="{% url 'libros:tipo_list' %}" class="btn btn-primary">Volver</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
