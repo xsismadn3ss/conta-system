@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Libros Contables{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="text-dark">Sistema de Libros Contables</h1>
+    
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Libros Mayores</h5>
+                    <p class="card-text">Gestión de movimientos contables</p>
+                    <a href="{% url 'libros:libros_list' %}" class="btn btn-primary">Acceder</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Tipos de Movimiento</h5>
+                    <p class="card-text">Administración de tipos contables</p>
+                    <a href="{% url 'libros:tipo_list' %}" class="btn btn-primary">Acceder</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
