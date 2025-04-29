@@ -1,27 +1,30 @@
 from django.shortcuts import render
 from django.views.generic import ListView, CreateView
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
 from .models import Jerarquia, Tipo, Cuenta
 from .forms import JerarquiaForm, TipoForm, CuentaForm
 from django.shortcuts import redirect
 
 # Catalogo inicio
+@login_required
 def index(request):
     return render(request, "catalogo_index.html")
 
 # Jerarquia views
-class JerarquiaListView(ListView):
+class JerarquiaListView(LoginRequiredMixin, ListView):
     model = Jerarquia
     template_name = "jerarquia/jerarquia_list.html"
     context_object_name = "jerarquias"
 
-
-class JerarquiaCreateView(CreateView):
+class JerarquiaCreateView(LoginRequiredMixin, CreateView):
     model = Jerarquia
     template_name = "jerarquia/jerarquia_form.html"
     fields = ["nombre"]
     success_url = reverse_lazy("catalogo:jerarquia_list")
 
+@login_required
 def jerarquia_detail_view(request, pk):
     try:
         jerarquia = Jerarquia.objects.get(pk=pk)
@@ -32,6 +35,7 @@ def jerarquia_detail_view(request, pk):
         return render(request, "jerarquia/jerarquia_not_found.html")
 
 
+@login_required
 def jerarquia_update_view(request, pk):
     try:
         jerarquia = Jerarquia.objects.get(pk=pk)
@@ -46,6 +50,7 @@ def jerarquia_update_view(request, pk):
     except Jerarquia.DoesNotExist:
         return render(request, "jerarquia/jerarquia_not_found.html")
 
+@login_required
 def jerarquia_delete_view(request, pk):
     try:
         jerarquia = Jerarquia.objects.get(pk=pk)
@@ -60,18 +65,18 @@ def jerarquia_delete_view(request, pk):
 
 
 # Tipo views
-class TipoListView(ListView):
+class TipoListView(LoginRequiredMixin, ListView):
     model = Tipo
     template_name = "tipo/tipo_list.html"
     context_object_name = "tipos"
 
-
-class TipoCreateView(CreateView):
+class TipoCreateView(LoginRequiredMixin, CreateView):
     model = Tipo
     template_name = "tipo/tipo_form.html"
     fields = ["nombre"]
     success_url = reverse_lazy("catalogo:tipo_list")
 
+@login_required
 def tipo_detail_view(request, pk):
     try:
         tipo = Tipo.objects.get(pk=pk)
@@ -79,6 +84,7 @@ def tipo_detail_view(request, pk):
     except Tipo.DoesNotExist:
         return render(request, "tipo/tipo_not_found.html")
 
+@login_required
 def tipo_update_view(request, pk):
     try:
         tipo = Tipo.objects.get(pk=pk)
@@ -93,6 +99,7 @@ def tipo_update_view(request, pk):
     except Tipo.DoesNotExist:
         return render(request, "tipo/tipo_not_found.html")
 
+@login_required
 def tipo_delete_view(request, pk):
     try:
         tipo = Tipo.objects.get(pk=pk)
@@ -105,17 +112,18 @@ def tipo_delete_view(request, pk):
 
 
 # Cuenta views
-class CuentaListView(ListView):
+class CuentaListView(LoginRequiredMixin, ListView):
     model = Cuenta
     template_name = "cuenta/cuenta_list.html"
     context_object_name = "cuentas"
 
-class CuentaCreateView(CreateView):
+class CuentaCreateView(LoginRequiredMixin, CreateView):
     model = Cuenta
     template_name = "cuenta/cuenta_form.html"
     fields = ["nombre", "tipo", "jerarquia", 'estado']
     success_url = reverse_lazy("catalogo:cuenta_list")
 
+@login_required
 def cuenta_detail_view(request, pk):
     try:
         cuenta = Cuenta.objects.get(pk=pk)
@@ -123,6 +131,7 @@ def cuenta_detail_view(request, pk):
     except Cuenta.DoesNotExist:
         return render(request, "cuenta/cuenta_not_found.html")
 
+@login_required
 def cuenta_update_view(request, pk):
     try:
         cuenta = Cuenta.objects.get(pk=pk)
@@ -137,6 +146,7 @@ def cuenta_update_view(request, pk):
     except Cuenta.DoesNotExist:
         return render(request, "cuenta/cuenta_not_found.html")
 
+@login_required
 def cuenta_delete_view(request, pk):
     try:
         cuenta = Cuenta.objects.get(pk=pk)
