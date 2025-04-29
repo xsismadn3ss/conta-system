@@ -15,9 +15,9 @@ urlpatterns = [
     path('partidas/<int:pk>/eliminar', view=views.jerarquia_delete_view, name='partida_delete'),
 
     # detalles
-    path('detalles/', view=views.DetallesCreateView.as_view(), name='detalles_list'),
+    path('detalles/', view=views.detalles_list_view, name='detalles_list'),
     path('detalles/nueva/', view=views.DetallesCreateView.as_view(), name='detalles_create'),
-    path('detalles/', view=views.detalles_detail_view, name='detalles_detail'),
+    path('detalles/<int:pk>', view=views.detalles_detail_view, name='detalles_detail'),
     path('detalles/<int:pk>/editar', view=views.detalles_update_view, name='detalles_update'),
     path('detalles/<int:pk>/eliminar', view=views.detalles_delete_view, name='detalles_delete')
 ]
