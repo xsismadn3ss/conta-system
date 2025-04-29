@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Partida no encontrada{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="alert alert-danger">
+        <h1>Ups</h1>
+        <p>La partida que estás buscando no existe o ha sido eliminada.</p>
+        <a href="{% url 'partidas:partida_list' %}" class="btn btn-primary">Volver al listado</a>
+    </div>
+</div>
+{% endblock %}
