@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}Detalle de Partida{% endblock title %}
+{% block content %}
+<h1>Detalle de Partida</h1>
+<p><strong>Título:</strong> {{ partida.titulo }}</p>
+<p><strong>Fecha de Creación:</strong> {{ partida.fecha_creacion }}</p>
+<p><strong>Descripción:</strong> {{ partida.descripcion }}</p>
+<a href="{% url 'partidas:partida_list' %}" class="btn btn-secondary">Volver</a>
+{% endblock %}

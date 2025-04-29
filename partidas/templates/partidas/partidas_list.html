@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Listado de Partidas{% endblock title %}
+{% block content %}
+<h1>Listado de Partidas</h1>
+<a href="{% url 'partidas:partida_create' %}" class="btn btn-primary">Nueva Partida</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Título</th>
+            <th>Fecha de Creación</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for partida in jerarquias %}
+        <tr>
+            <td>{{ partida.id }}</td>
+            <td>{{ partida.titulo }}</td>
+            <td>{{ partida.fecha_creacion }}</td>
+            <td>
+                <a href="{% url 'partidas:partida_detail' partida.id %}" class="btn btn-info btn-sm">Ver</a>
+                <a href="{% url 'partidas:partida_update' partida.id %}" class="btn btn-warning btn-sm">Editar</a>
+                <a href="{% url 'partidas:partida_delete' partida.id %}" class="btn btn-danger btn-sm">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

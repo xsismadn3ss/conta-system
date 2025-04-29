@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Crear/Editar Partida{% endblock title %}
+{% block content %}
+<h1>{% if form.instance.pk %}Editar{% else %}Crear{% endif %} Partida</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Guardar</button>
+    <a href="{% url 'partidas:partida_list' %}" class="btn btn-secondary">Cancelar</a>
+</form>
+{% endblock %}
