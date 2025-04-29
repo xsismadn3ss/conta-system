@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Detalle no encontrado{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="alert alert-danger">
+        <h1>Ups</h1>
+        <p>El detalle que estás buscando no existe o ha sido eliminado.</p>
+        <a href="{% url 'partidas:detalles_list' %}" class="btn btn-primary">Volver al listado</a>
+    </div>
+</div>
+{% endblock %}
