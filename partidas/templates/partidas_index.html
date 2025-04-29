@@ -1,4 +1,27 @@
 {% extends "base.html" %}
-{% block title %}Partidas{% endblock title %}
-
-{% block content %}<h2>Partidas</h2>{% endblock content %}
+{% block title %}Inicio de Partidas{% endblock title %}
+{% block content %}
+<h1 class="text-dark">Módulo de Partidas</h1>
+<div class="container mt-4 bg-light">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Listado de Partidas</h5>
+                    <p class="card-text">Ver y gestionar todas las partidas registradas.</p>
+                    <a href="{% url 'partidas:partida_list' %}" class="btn btn-primary">Ir a Partidas</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Detalles</h5>
+                    <p class="card-text">Gestionar los detalles asociados a las partidas.</p>
+                    <a href="{% url 'partidas:detalles_list' %}" class="btn btn-primary">Ir a Detalles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
