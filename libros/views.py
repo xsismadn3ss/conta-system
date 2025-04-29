@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import ListView, CreateView
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
 from django.shortcuts import redirect
 from django.http.request import HttpRequest
@@ -8,20 +10,22 @@ from .forms import LibroMayorForm, TipoForm
 
 
 # Libros Mayores inicio
+@login_required
 def index(request:HttpRequest):
     return render(request, "libros_index.html")
 
-class LibroMayorListView(ListView):
+class LibroMayorListView(ListView, LoginRequiredMixin):
     model = LibroMayor
     template_name = "libros/libros_list.html"
     context_object_name = "libros"
 
-class LibroMayorCreateView(CreateView):
+class LibroMayorCreateView(CreateView, LoginRequiredMixin):
     model = LibroMayor
     template_name = "libros/libros_form.html"
     fields = ["saldo_anterior", "movimiento", "saldo_final", "tipo_movimiento", "cuenta"]
     success_url = reverse_lazy("libros:libros_list")
 
+@login_required
 def libro_detail_view(request:HttpRequest, pk:int):
     try:
         libro = LibroMayor.objects.get(pk=pk)
@@ -29,6 +33,7 @@ def libro_detail_view(request:HttpRequest, pk:int):
     except LibroMayor.DoesNotExist:
         return render(request, "libros/libros_not_found.html")
 
+@login_required
 def libro_update_view(request:HttpRequest, pk:int):
     try:
         libro = LibroMayor.objects.get(pk=pk)
@@ -43,6 +48,7 @@ def libro_update_view(request:HttpRequest, pk:int):
     except LibroMayor.DoesNotExist:
         return render(request, "libros/libros_not_found.html")
 
+@login_required
 def libro_delete_view(request:HttpRequest, pk:int):
     try:
         libro = LibroMayor.objects.get(pk=pk)
@@ -54,17 +60,18 @@ def libro_delete_view(request:HttpRequest, pk:int):
         return render(request, "libros/libros_not_found.html")
 
 # Tipo views
-class TipoListView(ListView):
+class TipoListView(ListView, LoginRequiredMixin):
     model = Tipo
     template_name = "tipo/tipo_list.html"
     context_object_name = "tipos"
 
-class TipoCreateView(CreateView):
+class TipoCreateView(CreateView, LoginRequiredMixin):
     model = Tipo
     template_name = "tipo/tipo_form.html"
     fields = ["nombre"]
     success_url = reverse_lazy("libros:tipo_list")
 
+@login_required
 def tipo_detail_view(request:HttpRequest, pk:int):
     try:
         tipo = Tipo.objects.get(pk=pk)
@@ -72,6 +79,7 @@ def tipo_detail_view(request:HttpRequest, pk:int):
     except Tipo.DoesNotExist:
         return render(request, "tipo/tipo_not_found.html")
 
+@login_required
 def tipo_update_view(request:HttpRequest, pk:int):
     try:
         tipo = Tipo.objects.get(pk=pk)
@@ -86,6 +94,7 @@ def tipo_update_view(request:HttpRequest, pk:int):
     except Tipo.DoesNotExist:
         return render(request, "tipo/tipo_not_found.html")
 
+@login_required
 def tipo_delete_view(request:HttpRequest, pk:int):
     try:
         tipo = Tipo.objects.get(pk=pk)
