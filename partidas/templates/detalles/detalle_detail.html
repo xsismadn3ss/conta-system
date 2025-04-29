@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Detalle de Detalle{% endblock title %}
+{% block content %}
+<h1>Detalle de Detalle</h1>
+<p><strong>Monto Debe:</strong> {{ detalle.monto_debe }}</p>
+<p><strong>Monto Haber:</strong> {{ detalle.monto_haber }}</p>
+<p><strong>Partida:</strong> {{ detalle.partida }}</p>
+<p><strong>Catálogo de Cuentas:</strong> {{ detalle.catalogo_cuentas }}</p>
+<a href="{% url 'partidas:detalles_list' %}" class="btn btn-secondary">Volver</a>
+{% endblock %}
