@@ -7,8 +7,6 @@ from .models import PartidaRegistro, Detalles
 from .forms import PartidaForm, DetallesForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-login_url='/login'
-
 # Create your views here.
 @login_required()
 def index(request):
@@ -27,7 +25,7 @@ class PartidaCreateView(LoginRequiredMixin, CreateView):
     fields = ['titulo', 'descripcion']
     success_url = reverse_lazy('partidas:partida_list')
 
-@login_required(login_url='/')
+@login_required()
 def partida_detail_view(request, pk):
     try:
         partida = PartidaRegistro.objects.get(pk=pk)
@@ -35,7 +33,7 @@ def partida_detail_view(request, pk):
     except PartidaRegistro.DoesNotExist:
         return render(request, "partidas/partida_not_found.html")
 
-@login_required(login_url='/')
+@login_required()
 def partida_update_view(request, pk):
     try:
         partida = PartidaRegistro.objects.get(pk=pk)
@@ -50,7 +48,7 @@ def partida_update_view(request, pk):
     except PartidaRegistro.DoesNotExist:
         return render(request, "partidas/partida_not_found.html")
 
-@login_required(login_url='/')  
+@login_required()  
 def jerarquia_delete_view(request: HttpRequest, pk):
     try:
         partida = PartidaRegistro.objects.get(pk=pk)
@@ -65,7 +63,7 @@ def jerarquia_delete_view(request: HttpRequest, pk):
     
 
 # Detalles views
-@login_required(login_url='/')
+@login_required()
 def detalles_list_view(request):
     detalles = Detalles.objects.all()
     return render(request, 'detalles/detalle_list.html', {"detalles": detalles})
@@ -76,7 +74,7 @@ class DetallesCreateView(LoginRequiredMixin,CreateView):
     fields = ['monto_debe', 'monto_haber', 'partida', 'catalogo_cuentas']
     success_url = reverse_lazy('partidas:detalles_list')
 
-@login_required(login_url='/')
+@login_required()
 def detalles_detail_view(request, pk):
     try:
         detalle = Detalles.objects.get(pk=pk)
@@ -84,7 +82,7 @@ def detalles_detail_view(request, pk):
     except Detalles.DoesNotExist:
         return render(request, "detalles/detalle_not_found.html")
 
-@login_required(login_url='/')   
+@login_required()   
 def detalles_update_view(request: HttpRequest, pk):
     try:
         detalle = Detalles.objects.get(pk=pk)
@@ -99,7 +97,7 @@ def detalles_update_view(request: HttpRequest, pk):
     except Detalles.DoesNotExist:
         return render(request, "detalles/detalle_not_found.html")
     
-@login_required(login_url='/')
+@login_required()
 def detalles_delete_view(request: HttpRequest, pk):
     try:
         detalle = Detalles.objects.get(pk=pk)
