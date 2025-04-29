@@ -6,6 +6,11 @@
 <div class="container py-5">
     <div class="row mb-4">
         <div class="col-12">
+            {% if user.is_authenticated %}
+            <div>
+                <h4>¡Hola {{ user.first_name }}!</h4>
+            </div>
+            {% endif %}
             <h1 class="display-4 text-primary">Bienvenido al Sistema Contable</h1>
             <p class="lead">Gestione sus finanzas de manera eficiente y profesional</p>
         </div>
