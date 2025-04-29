@@ -1,7 +1,76 @@
 {% extends "base.html" %}
 
-{% block title %}Inicio{% endblock title %}
+{% block title %}Sistema Contable - Inicio{% endblock title %}
 
 {% block content %}
-<h2>Hello world</h2>
+<div class="container py-5">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h1 class="display-4 text-primary">Bienvenido al Sistema Contable</h1>
+            <p class="lead">Gestione sus finanzas de manera eficiente y profesional</p>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Libro Diario</h5>
+                    <p class="card-text">Registre y consulte sus asientos contables diarios.</p>
+                    <a href="#" class="btn btn-primary">Acceder</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Balance General</h5>
+                    <p class="card-text">Visualice el estado financiero de su empresa.</p>
+                    <a href="#" class="btn btn-primary">Ver Balance</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">Estado de Resultados</h5>
+                    <p class="card-text">Analice sus ingresos y gastos del período.</p>
+                    <a href="#" class="btn btn-primary">Ver Estado</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Resumen de Actividad Reciente</h5>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Fecha</th>
+                                    <th>Descripción</th>
+                                    <th>Monto</th>
+                                    <th>Estado</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{% now "d/m/Y" %}</td>
+                                    <td>Sin registros recientes</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock content %}
