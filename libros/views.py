@@ -14,12 +14,12 @@ from .forms import LibroMayorForm, TipoForm
 def index(request:HttpRequest):
     return render(request, "libros_index.html")
 
-class LibroMayorListView(ListView, LoginRequiredMixin):
+class LibroMayorListView(LoginRequiredMixin, ListView):
     model = LibroMayor
     template_name = "libros/libros_list.html"
     context_object_name = "libros"
 
-class LibroMayorCreateView(CreateView, LoginRequiredMixin):
+class LibroMayorCreateView(LoginRequiredMixin, CreateView, ):
     model = LibroMayor
     template_name = "libros/libros_form.html"
     fields = ["saldo_anterior", "movimiento", "saldo_final", "tipo_movimiento", "cuenta"]
@@ -60,12 +60,12 @@ def libro_delete_view(request:HttpRequest, pk:int):
         return render(request, "libros/libros_not_found.html")
 
 # Tipo views
-class TipoListView(ListView, LoginRequiredMixin):
+class TipoListView(LoginRequiredMixin, ListView):
     model = Tipo
     template_name = "tipo/tipo_list.html"
     context_object_name = "tipos"
 
-class TipoCreateView(CreateView, LoginRequiredMixin):
+class TipoCreateView(LoginRequiredMixin, CreateView):
     model = Tipo
     template_name = "tipo/tipo_form.html"
     fields = ["nombre"]
