@@ -59,7 +59,7 @@ def jerarquia_delete_view(request: HttpRequest, pk):
 # Detalles views
 class DetallesListView(ListView):
     model = Detalles
-    template_name = 'detaller/detalles_list.html'
+    template_name = 'detalles/detalles_list.html'
     context_object_name = 'detalles'
 
 class DetallesCreateView(CreateView):
