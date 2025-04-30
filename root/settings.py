@@ -31,6 +31,7 @@ DEBUG = bool(int(os.getenv('DEBUG'))) if os.getenv('DEBUG') else True
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
+LOGIN_URL = '/login/'
 
 # Application definition
 
