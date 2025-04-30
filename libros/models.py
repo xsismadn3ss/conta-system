@@ -9,7 +9,7 @@ class Tipo(models.Model):
     nombre = models.CharField(unique=True, null=False, max_length=50)
 
     def __str__(self):
-        return f"nombre: {self.nombre}"
+        return f"{self.nombre}"
 
 
 class LibroMayor(models.Model):
