@@ -6,14 +6,14 @@ class Jerarquia(models.Model):
     nombre = models.CharField(null=False, unique=True, max_length=255)
 
     def __str__(self):
-        return f"{self.id} {self.nombre}"
+        return f"{self.pk} {self.nombre}"
 
 
 class Tipo(models.Model):
     nombre = models.CharField(null=False, unique=True, max_length=255)
 
     def __str__(self):
-        return f"{self.id} {self.nombre}"
+        return f"{self.pk} {self.nombre}"
 
 
 class Cuenta(models.Model):
