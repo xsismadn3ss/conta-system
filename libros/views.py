@@ -22,7 +22,7 @@ class LibroMayorListView(LoginRequiredMixin, ListView):
 class LibroMayorCreateView(LoginRequiredMixin, CreateView, ):
     model = LibroMayor
     template_name = "libros/libros_form.html"
-    fields = ["saldo_anterior", "movimiento", "saldo_final", "tipo_movimiento", "cuenta"]
+    fields = ["saldo_anterior", "movimiento", "tipo_movimiento", "cuenta"]
     success_url = reverse_lazy("libros:libros_list")
 
 @login_required
