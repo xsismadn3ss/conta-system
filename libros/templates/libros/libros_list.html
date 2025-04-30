@@ -4,7 +4,9 @@
 {% block content %}
 <div class="container mt-4">
     <h1 class="text-dark">Libros Mayores</h1>
+    {% if can_create %}
     <a href="{% url 'libros:libros_create' %}" class="btn btn-primary mb-3">Nuevo Libro</a>
+    {% endif %}
     
     <div class="table-responsive">
         <table class="table table-striped">
@@ -25,17 +27,29 @@
                 {% for libro in libros %}
                 <tr>
                     <td>{{ libro.id }}</td>
-                    <td>{{ libro.cuenta }}</td>
+                    <td>
+                        <a href="{% url 'catalogo:cuenta_detail' libro.cuenta.id %}">
+                            {{ libro.cuenta.nombre }}
+                        </a>
+                    </td>
                     <td>{{ libro.saldo_anterior }}</td>
                     <td>{{ libro.movimiento }}</td>
                     <td>{{ libro.saldo_final }}</td>
-                    <td>{{ libro.tipo_movimiento }}</td>
+                    <td>
+                        <a href="{% url 'libros:tipo_detail' libro.tipo_movimiento.id %}?prev={{ request.path }}">
+                            {{ libro.tipo_movimiento }}
+                        </a>
+                    </td>
                     <td>{{ libro.fecha_actualizacion }}</td>
                     <td>{{ libro.estado|yesno:"Activo,Inactivo" }}</td>
                     <td>
                         <a href="{% url 'libros:libros_detail' libro.id %}" class="btn btn-sm btn-info">Ver</a>
-                        <a href="{% url 'libros:libros_update' libro.id %}" class="btn btn-sm btn-warning">Editar</a>
-                        <a href="{% url 'libros:libros_delete' libro.id %}" class="btn btn-sm btn-danger">Eliminar</a>
+                        {% if can_edit %}
+                            <a href="{% url 'libros:libros_update' libro.id %}" class="btn btn-sm btn-warning">Editar</a>
+                        {% endif %}
+                        {% if can_delete %}
+                            <a href="{% url 'libros:libros_delete' libro.id %}" class="btn btn-sm btn-danger">Eliminar</a>
+                        {% endif %}
                     </td>
                 </tr>
                 {% endfor %}
