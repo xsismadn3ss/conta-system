@@ -8,7 +8,7 @@ urlpatterns = [
     path('', views.index, name='index'),
 
     # URLS para Libros Mayores
-    path('libros/', views.LibroMayorListView.as_view(), name='libros_list'),
+    path('libros/', views.libro_list_view, name='libros_list'),
     path('libros/nuevo/', views.LibroMayorCreateView.as_view(), name='libros_create'),
     path('libros/<int:pk>', views.libro_detail_view, name='libros_detail'),
     path('libros/<int:pk>/editar/', views.libro_update_view, name='libros_update'),
