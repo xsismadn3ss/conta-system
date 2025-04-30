@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Acceso denegado{% endblock %}
+
+{% block content %}
+    <div style="height:80vh;">
+        <div class="pt-xl-5">
+            <h1>403 - Acceso denegado</h1>
+            <p>No tienes permiso para acceder a esta página. <br>
+            Por favor, contacta al administrador si crees que esto es un error. <br>
+            Volver a <a href="{% url 'home' %}">página de inicio</a></p>
+        </div>
+    </div>
+{% endblock %}
