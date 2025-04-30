@@ -16,6 +16,8 @@
                     <th>Movimiento</th>
                     <th>Saldo Final</th>
                     <th>Tipo Movimiento</th>
+                    <th>Fecha de Actualización</th>
+                    <th>Estado</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -28,6 +30,8 @@
                     <td>{{ libro.movimiento }}</td>
                     <td>{{ libro.saldo_final }}</td>
                     <td>{{ libro.tipo_movimiento }}</td>
+                    <td>{{ libro.fecha_actualizacion }}</td>
+                    <td>{{ libro.estado|yesno:"Activo,Inactivo" }}</td>
                     <td>
                         <a href="{% url 'libros:libros_detail' libro.id %}" class="btn btn-sm btn-info">Ver</a>
                         <a href="{% url 'libros:libros_update' libro.id %}" class="btn btn-sm btn-warning">Editar</a>
