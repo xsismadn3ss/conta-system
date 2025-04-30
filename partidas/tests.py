@@ -55,7 +55,6 @@ class DetallesTestCase(TestCase):
         def update_libro(libro:LibroMayor, detalle:Detalles, saldo_anterior:float=0.0):
             libro.saldo_anterior = saldo_anterior
             libro.movimiento = (detalle.monto_debe or 0.0)*-1 + (detalle.monto_haber or 0.0)
-            libro.saldo_final = libro.saldo_anterior + libro.movimiento
             libro.save()
 
         # Crear un libro y que tenga el saldo
