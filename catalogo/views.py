@@ -32,7 +32,7 @@ def jerarquia_detail_view(request, pk):
             request, "jerarquia/jerarquia_detail.html", {"jerarquia": jerarquia}
         )
     except Jerarquia.DoesNotExist:
-        return render(request, "jerarquia/jerarquia_not_found.html")
+        return render(request, "jerarquia/jerarquia_not_found.html", status=404)
 
 
 @login_required
@@ -48,7 +48,7 @@ def jerarquia_update_view(request, pk):
             form = JerarquiaForm(instance=jerarquia)
         return render(request, "jerarquia/jerarquia_form.html", {"form": form})
     except Jerarquia.DoesNotExist:
-        return render(request, "jerarquia/jerarquia_not_found.html")
+        return render(request, "jerarquia/jerarquia_not_found.html", status=404)
 
 @login_required
 def jerarquia_delete_view(request, pk):
@@ -61,7 +61,7 @@ def jerarquia_delete_view(request, pk):
             request, "jerarquia/jerarquia_confirm_delete.html", {"object": jerarquia}
         )
     except Jerarquia.DoesNotExist:
-        return render(request, "jerarquia/jerarquia_not_found.html")
+        return render(request, "jerarquia/jerarquia_not_found.html", status=404)
 
 
 # Tipo views
@@ -82,9 +82,9 @@ def tipo_detail_view(request, pk):
         tipo = Tipo.objects.get(pk=pk)
         return render(request, "tipo/tipo_detail.html", {"tipo": tipo})
     except Tipo.DoesNotExist:
-        return render(request, "tipo/tipo_not_found.html")
+        return render(request, "tipo/tipo_not_found.html", status=404)
 
-@login_required
+@login_required # type: ignore
 def tipo_update_view(request, pk):
     try:
         tipo = Tipo.objects.get(pk=pk)
@@ -97,7 +97,7 @@ def tipo_update_view(request, pk):
             form = TipoForm(instance=tipo)
             return render(request, "tipo/tipo_form.html", {"form": form})
     except Tipo.DoesNotExist:
-        return render(request, "tipo/tipo_not_found.html")
+        return render(request, "tipo/tipo_not_found.html", status=404)
 
 @login_required
 def tipo_delete_view(request, pk):
@@ -108,7 +108,7 @@ def tipo_delete_view(request, pk):
             return redirect("catalogo:tipo_list")
         return render(request, "tipo/tipo_confirm_delete.html", {"object": tipo})
     except Tipo.DoesNotExist:
-        return render(request, "tipo/tipo_not_found.html")
+        return render(request, "tipo/tipo_not_found.html",status=404)
 
 
 # Cuenta views
@@ -129,7 +129,7 @@ def cuenta_detail_view(request, pk):
         cuenta = Cuenta.objects.get(pk=pk)
         return render(request, "cuenta/cuenta_detail.html", {"cuenta": cuenta})
     except Cuenta.DoesNotExist:
-        return render(request, "cuenta/cuenta_not_found.html")
+        return render(request, "cuenta/cuenta_not_found.html", status=404)
 
 @login_required
 def cuenta_update_view(request, pk):
@@ -144,7 +144,7 @@ def cuenta_update_view(request, pk):
             form = CuentaForm(instance=cuenta)
         return render(request, "cuenta/cuenta_form.html", {"form": form})
     except Cuenta.DoesNotExist:
-        return render(request, "cuenta/cuenta_not_found.html")
+        return render(request, "cuenta/cuenta_not_found.html", status=404)
 
 @login_required
 def cuenta_delete_view(request, pk):
@@ -155,5 +155,5 @@ def cuenta_delete_view(request, pk):
             return redirect("catalogo:cuenta_list")
         return render(request, "cuenta/cuenta_confirm_delete.html", {"object": cuenta})
     except Cuenta.DoesNotExist:
-        return render(request, "cuenta/cuenta_not_found.html")
+        return render(request, "cuenta/cuenta_not_found.html",status=404)
 

@@ -17,7 +17,7 @@ urlpatterns = [
     path('tipos/', views.TipoListView.as_view(), name='tipo_list'),
     path('tipos/nuevo/', views.TipoCreateView.as_view(), name='tipo_create'),
     path('tipos/<int:pk>/', views.tipo_detail_view, name='tipo_detail'),
-    path('tipos/<int:pk>/editar/', views.tipo_update_view, name='tipo_update'),
+    path('tipos/<int:pk>/editar/', views.tipo_update_view, name='tipo_update'), # type: ignore
     path('tipos/<int:pk>/eliminar/', views.tipo_delete_view, name='tipo_delete'),
     
     # URLs para Cuenta
