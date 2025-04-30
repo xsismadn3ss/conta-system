@@ -1,11 +1,11 @@
 {% extends "base.html" %}
-{% block title %}Crear/Editar Detalle{% endblock title %}
+{% block title %}{% if form.instance.pk %}Editar detalle{% else %}Crear detalle{% endif %}{% endblock title %}
 {% block content %}
 <h1>{% if form.instance.pk %}Editar{% else %}Crear{% endif %} Detalle</h1>
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit" class="btn btn-primary">Guardar</button>
-    <a href="{% url 'partidas:detalles_list' %}" class="btn btn-secondary">Cancelar</a>
+    <a href="{% url 'partidas:partida_detalles' pk=pk %}" class="btn btn-secondary">Cancelar</a>
 </form>
 {% endblock %}

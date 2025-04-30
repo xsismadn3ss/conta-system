@@ -1,14 +1,19 @@
 {% extends "base.html" %}
 {% block title %}Listado de Detalles{% endblock title %}
 {% block content %}
-<h1>Listado de Detalles</h1>
-<a href="{% url 'partidas:detalles_create' %}" class="btn btn-primary">Nuevo Detalle</a>
+{% if partida %}
+<h1>Detalles de la Partida: {{ partida.id }}</h1>
+{% else %}
+<h1>Todos los detalles</h1>
+{% endif %}
+<a href="{% url "partidas:detalles_create" pk=partida.id %}" class="btn btn-primary">Nuevo Detalle</a>
 <table class="table">
     <thead>
         <tr>
             <th>ID</th>
             <th>Monto Debe</th>
             <th>Monto Haber</th>
+            <th>Partida</th>
             <th>Acciones</th>
         </tr>
     </thead>
@@ -18,10 +23,11 @@
             <td>{{ detalle.id }}</td>
             <td>{{ detalle.monto_debe }}</td>
             <td>{{ detalle.monto_haber }}</td>
+            <td>{{ detalle.partida }}</td>
             <td>
-                <a href="{% url 'partidas:detalles_detail' detalle.id %}" class="btn btn-info btn-sm">Ver</a>
-                <a href="{% url 'partidas:detalles_update' detalle.id %}" class="btn btn-warning btn-sm">Editar</a>
-                <a href="{% url 'partidas:detalles_delete' detalle.id %}" class="btn btn-danger btn-sm">Eliminar</a>
+                <a href="{% url "partidas:detalles_detail" pk=detalle.partida.id detalle_id=detalle.id %}" class="btn btn-info btn-sm">Ver</a>
+                <a href="{% url "partidas:detalles_update" pk=detalle.partida.id detalle_id=detalle.id %}" class="btn btn-warning btn-sm">Editar</a>
+                <a href="{% url "partidas:detalles_delete" pk=detalle.partida.id detalle_id=detalle.id %}" class="btn btn-danger btn-sm">Eliminar</a>
             </td>
         </tr>
         {% endfor %}
