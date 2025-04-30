@@ -4,11 +4,10 @@ from .models import LibroMayor, Tipo
 class LibroMayorForm(forms.ModelForm):
     class Meta:
         model = LibroMayor
-        fields = ['saldo_anterior', 'movimiento', 'saldo_final', 'tipo_movimiento', 'cuenta']
+        fields = ['saldo_anterior', 'movimiento', 'tipo_movimiento', 'cuenta']
         widgets = {
             'saldo_anterior': forms.NumberInput(attrs={'class': 'form-control'}),
             'movimiento': forms.NumberInput(attrs={'class': 'form-control'}),
-            'saldo_final': forms.NumberInput(attrs={'class': 'form-control'}),
             'tipo_movimiento': forms.Select(attrs={'class': 'form-control'}),
             'cuenta': forms.Select(attrs={'class': 'form-control'})
         }
