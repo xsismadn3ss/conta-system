@@ -1,9 +1,12 @@
 {% extends "base.html" %}
 {% block title %}Detalle de Partida{% endblock title %}
 {% block content %}
-<h1>Detalle de Partida</h1>
+{% comment %} <h1>Detalle de Partida</h1> {% endcomment %}
 <p><strong>Título:</strong> {{ partida.titulo }}</p>
 <p><strong>Fecha de Creación:</strong> {{ partida.fecha_creacion }}</p>
 <p><strong>Descripción:</strong> {{ partida.descripcion }}</p>
-<a href="{% url 'partidas:partida_list' %}" class="btn btn-secondary">Volver</a>
+<div class="d-flex justify-content-start gap-3 mt-3">
+    <a href="{% url 'partidas:partida_detalles' partida.id %}" class="btn btn-primary">Ver detalles</a>
+    <a href="{% url 'partidas:partida_list' %}" class="btn btn-secondary">Volver</a>
+</div>
 {% endblock %}
