@@ -1,12 +1,11 @@
 from django.db import models
 from django.utils import timezone
-from datetime import datetime
 
 
 # Create your models here.
 class PartidaRegistro(models.Model):
     titulo = models.CharField(max_length=100, null=False)
-    fecha_creacion = models.DateTimeField(default=datetime.now, null=False)
+    fecha_creacion = models.DateTimeField(default=timezone.now, null=False)  # Cambiado a timezone.now
     descripcion = models.CharField(max_length=255)
 
     def __str__(self):
