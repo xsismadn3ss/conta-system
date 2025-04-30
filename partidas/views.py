@@ -1,11 +1,8 @@
 from django.shortcuts import render, redirect
 from django.http import HttpRequest
-from django.views.generic import ListView, CreateView
-from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
 from .models import PartidaRegistro, Detalles
 from .forms import PartidaForm, DetallesForm
-from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 # Partida views
@@ -96,7 +93,7 @@ def detalles_create_view(request: HttpRequest, pk):
 def detalles_detail_view(request, detalle_id, pk):
     try:
         detalle = Detalles.objects.get(pk=detalle_id)
-        print(detalle.partida.id)
+        print(detalle.partida.pk)
         return render(request, "detalles/detalle_detail.html", {"detalle": detalle})
     except Detalles.DoesNotExist:
         return render(request, "detalles/detalle_not_found.html", {"pk": pk})
@@ -124,7 +121,7 @@ def detalles_delete_view(request: HttpRequest, detalle_id, pk):
         detalle = Detalles.objects.get(pk=detalle_id)
         if request.method == "POST":
             detalle.delete()
-            return redirect("partidas:detalles_list")
+            return redirect("partidas:partida_detalles", pk=pk)
         return render(
             request,
             "detalles/detalle_confirm_delete.html",
