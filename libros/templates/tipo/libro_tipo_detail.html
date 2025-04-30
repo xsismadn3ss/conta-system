@@ -8,9 +8,12 @@
     <div class="card">
         <div class="card-body">
             <h5 class="card-title">ID: {{ tipo.id }}</h5>
-            <p class="card-text"><strong>Nombre:</strong> {{ tipo.nombre }}</p>
-            
-            <a href="{% url 'libros:tipo_list' %}" class="btn btn-primary">Volver</a>
+            <p class="card-text"><strong>Nombre:</strong> {{ tipo }}</p>
+            {% if prev %}
+                <a href="{{ prev }}" class="btn btn-primary">Volver</a>
+            {% else %}
+                <a href="{% url 'libros:tipo_list' %}" class="btn btn-primary">Volver</a>
+            {% endif %}
         </div>
     </div>
 </div>
